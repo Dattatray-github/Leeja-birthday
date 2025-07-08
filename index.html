@@ -1,55 +1,50 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Leeja</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Leeja 🎉</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<!-- Page 1 -->
-<section class="page" id="page1">
-    <div class="content center">
-        <h1>🎉 Happy 27th Birthday, Leeja! 🎉</h1>
-        <img src="leena_1.jpg" alt="Leeja" class="photo" />
-        <p class="message">Wish you many many happy returns of the day dost!</p>
-        <p class="from">— Datta</p>
-        <button onclick="goToPage('page2')">See Memories</button>
+  <header>
+    <h1>Happy Birthday Leeja! 🎂</h1>
+    <p id="countdown">⏳ Loading countdown...</p>
+    <a class="fancy-button" href="#gallery">See Our Memories</a>
+  </header>
+
+  <section id="gallery">
+    <h2>Memories Together 💖</h2>
+    <div class="slider">
+      <img src="photo1.jpg" alt="Memory 1" />
+      <img src="photo2.jpg" alt="Memory 2" />
+      <img src="photo3.jpg" alt="Memory 3" />
+      <!-- Add more images in the same pattern -->
     </div>
-</section>
+    <p class="caption">Every moment with you is a memory I cherish. 💫</p>
+  </section>
 
-<!-- Page 2 -->
-<section class="page" id="page2">
-    <div class="content center">
-        <h2>📸 Beautiful Memories</h2>
-        <img src="leena_2.jpg" alt="Memories" class="photo wide" />
-        <p>Surrounded by smiles and love ❤️</p>
-        <button onclick="goToPage('page3')">Final Note</button>
-    </div>
-</section>
+  <section class="theme-3">
+    <h2>A Letter from the Heart ❤️</h2>
+    <p class="handwritten">
+      Dear Leeja,
+      
+      On this special day, I just want to say how grateful I am
+      to have you in my life. Your smile brightens my days, and your
+      kindness touches everyone around you.
 
-<!-- Page 3 -->
-<section class="page" id="page3">
-    <div class="content center">
-        <h2>💖 A Note from the Heart</h2>
-        <img src="leena_1.jpg" alt="Leeja" class="photo" />
-        <p class="message">
-            You're not just a friend, you're family.<br/>
-            Here's to celebrating your 27th with joy and gratitude.<br/>
-            — Datta 💙
-        </p>
-    </div>
-</section>
+      May this birthday bring you all the joy you deserve and more.
 
-<script>
-    function goToPage(pageId) {
-        document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
-        document.getElementById(pageId).style.display = 'block';
-    }
-    goToPage('page1');
-</script>
+      With love,
+      Datta
+    </p>
+  </section>
 
+  <footer>
+    Made with 💕 by Datta
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
