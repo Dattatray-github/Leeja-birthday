@@ -1,48 +1,83 @@
-
 body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #fff9f3;
-    color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom right, #ffe9ec, #fffdf0);
+  color: #333;
+  text-align: center;
 }
-.page {
-    display: none;
-    padding: 20px;
-    min-height: 100vh;
-    box-sizing: border-box;
+
+header {
+  background: #ffc0cb;
+  padding: 40px 20px;
 }
-.center {
-    text-align: center;
+
+header h1 {
+  font-size: 2.5em;
+  margin: 0;
+  color: #800000;
 }
-.photo {
-    width: 80%;
-    max-width: 300px;
-    border-radius: 15px;
-    margin: 20px auto;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+
+header p {
+  font-size: 1.2em;
 }
-.photo.wide {
-    width: 90%;
-    max-width: 500px;
+
+.fancy-button {
+  display: inline-block;
+  margin-top: 20px;
+  background: #ff69b4;
+  padding: 12px 24px;
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: background 0.3s;
 }
-.message {
-    font-size: 1.2em;
-    margin: 15px 0;
+
+.fancy-button:hover {
+  background: #ff1493;
 }
-.from {
-    font-style: italic;
-    color: #888;
+
+#gallery {
+  padding: 40px 20px;
+  background: #fff0f5;
 }
-button {
-    padding: 10px 20px;
-    background-color: #ff5e78;
-    color: white;
-    border: none;
-    border-radius: 25px;
-    font-size: 1em;
-    cursor: pointer;
-    margin-top: 20px;
+
+.slider {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 20px;
+  scroll-behavior: smooth;
 }
-button:hover {
-    background-color: #e14c65;
+
+.slider img {
+  max-height: 250px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+
+.caption {
+  margin-top: 20px;
+  font-style: italic;
+  font-size: 1.1em;
+  color: #8b0000;
+}
+
+.theme-3 {
+  background: #faf0e6;
+  padding: 40px 20px;
+}
+
+.handwritten {
+  font-family: 'Courier New', cursive;
+  font-size: 1.2em;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+footer {
+  background: #ffc0cb;
+  padding: 15px;
+  font-weight: bold;
 }
