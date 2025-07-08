@@ -1,0 +1,33 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #ffe6f0;
+  color: #333;
+  text-align: center;
+}
+
+.hero, .gallery, .message {
+  padding: 40px;
+}
+
+.button {
+  display: inline-block;
+  margin: 15px;
+  padding: 12px 24px;
+  background: #ff69b4;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.button:hover {
+  background: #ff1493;
+}
+
+.handwritten {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.5em;
+}
