@@ -3,180 +3,176 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Leeja's Birthday</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Birthday Memories</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to right, #fceabb, #f8b500);
+      background: linear-gradient(to bottom, #fff0f5, #ffe4e1);
       color: #333;
     }
 
-    .hero {
+    header {
       text-align: center;
-      padding: 60px 20px 20px;
+      padding: 2rem 1rem 0;
     }
 
     h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
     }
 
-    p {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
-    }
-
-    .button {
-      display: inline-block;
-      margin: 10px;
-      padding: 15px 30px;
-      background-color: #ff4081;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 25px;
-      transition: background-color 0.3s;
-    }
-
-    .button:hover {
-      background-color: #e91e63;
-    }
-
-    #countdown {
+    .countdown {
       font-size: 2rem;
       font-weight: bold;
-      margin: 20px 0;
-      background: white;
-      color: #222;
-      padding: 10px 20px;
-      display: inline-block;
-      border-radius: 15px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      margin: 1rem 0 2rem;
+      color: #e91e63;
     }
 
-    .timeline-container {
+    /* Vertical timeline styles */
+    .timeline {
       position: relative;
+      margin: 3rem auto;
+      padding: 1rem 0;
+      width: 90%;
       max-width: 600px;
-      margin: 60px auto;
-      padding-left: 30px;
     }
 
-    .timeline-container::before {
+    .timeline::before {
       content: '';
       position: absolute;
-      left: 20px;
+      left: 50%;
       top: 0;
+      transform: translateX(-50%);
       width: 4px;
       height: 100%;
-      background: #ff4081;
-      animation: growLine 2s ease-out forwards;
+      background: #e91e63;
+      animation: growLine 2s ease forwards;
     }
 
     @keyframes growLine {
-      from { height: 0; }
-      to { height: 100%; }
+      0% {
+        height: 0;
+      }
+      100% {
+        height: 100%;
+      }
     }
 
     .timeline-item {
       position: relative;
-      margin-bottom: 50px;
+      margin: 2rem 0;
+      width: 50%;
+      padding: 1rem;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       opacity: 0;
-      transform: translateY(30px);
-      animation: fadeInUp 0.6s ease forwards;
+      transform: translateY(50px);
+      animation: fadeInUp 0.8s ease forwards;
     }
 
-    .timeline-item:nth-child(1) { animation-delay: 0.3s; }
-    .timeline-item:nth-child(2) { animation-delay: 0.6s; }
-    .timeline-item:nth-child(3) { animation-delay: 0.9s; }
-    .timeline-item:nth-child(4) { animation-delay: 1.2s; }
+    .timeline-item:nth-child(odd) {
+      left: 0;
+      transform: translateX(-110%);
+    }
+
+    .timeline-item:nth-child(even) {
+      left: 50%;
+      transform: translateX(10%);
+    }
+
+    .timeline-item h3 {
+      margin: 0 0 0.5rem;
+      color: #e91e63;
+    }
 
     @keyframes fadeInUp {
       to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translate(0);
       }
     }
 
-    .timeline-dot {
-      position: absolute;
-      left: -5px;
-      top: 0;
-      width: 15px;
-      height: 15px;
-      background-color: #ff4081;
-      border-radius: 50%;
-      box-shadow: 0 0 10px rgba(255,64,129,0.4);
-    }
-
-    .timeline-text {
-      margin-left: 30px;
-      background: rgba(255, 255, 255, 0.9);
-      padding: 15px 20px;
-      border-radius: 10px;
-      font-size: 1rem;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
-    }
-
-    .bottom-buttons {
+    /* Buttons */
+    .buttons {
       text-align: center;
-      padding: 40px 20px;
+      margin: 3rem 0;
+    }
+
+    .buttons a {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background-color: #e91e63;
+      color: #fff;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .buttons a:hover {
+      background-color: #d81b60;
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>Happy Birthday!</h1>
+    <div class="countdown" id="countdown">Loading countdown...</div>
+  </header>
 
-  <div class="hero">
-    <h1>Happy Birthday Leeja 🎉</h1>
-    <p>Welcome to your special page!</p>
-    <div id="countdown">Loading countdown...</div>
-  </div>
+  <!-- Timeline Section -->
+  <section class="timeline">
+    <div class="timeline-item" style="animation-delay: 0.3s;">
+      <h3>1998</h3>
+      <p>Born — A beautiful soul entered the world!</p>
+    </div>
+    <div class="timeline-item" style="animation-delay: 0.6s;">
+      <h3>2021</h3>
+      <p>Started Career at TCS — A new chapter of growth began.</p>
+    </div>
+    <div class="timeline-item" style="animation-delay: 0.9s;">
+      <h3>2022</h3>
+      <p>Friendship Started — A bond that made life more joyful.</p>
+    </div>
+    <div class="timeline-item" style="animation-delay: 1.2s;">
+      <h3>∞</h3>
+      <p>Friendship Will Last Forever — To infinity and beyond!</p>
+    </div>
+  </section>
 
-  <div class="timeline-container">
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-text"><strong>1998:</strong> Born to make the world brighter 🌟</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-text"><strong>2021:</strong> Started career in TCS 🚀</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-text"><strong>2022:</strong> A beautiful friendship began 🤝</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-text"><strong>Infinity:</strong> This bond lasts forever ♾️</div>
-    </div>
-  </div>
-
-  <div class="bottom-buttons">
-    <a class="button" href="memories.html">See Our Memories</a>
-    <a class="button" href="message.html">A Beautiful Message</a>
+  <!-- Navigation Buttons -->
+  <div class="buttons">
+    <a href="memories.html">See Our Memories</a>
+    <a href="message.html">A Beautiful Message</a>
   </div>
 
   <script>
-    // Countdown Timer
+    // Countdown timer
     const countdownElement = document.getElementById("countdown");
-    const birthday = new Date("2025-07-10T00:00:00").getTime();
+    const birthdayDate = new Date("2025-07-10T00:00:00").getTime();
 
-    const x = setInterval(() => {
+    function updateCountdown() {
       const now = new Date().getTime();
-      const distance = birthday - now;
+      const distance = birthdayDate - now;
 
       if (distance < 0) {
-        clearInterval(x);
-        countdownElement.innerHTML = "🎂 It's Your Day!";
-      } else {
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        countdownElement.innerText = "🎉 Happy Birthday! 🎉";
+        return;
       }
-    }, 1000);
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownElement.innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
   </script>
 </body>
 </html>
