@@ -8,113 +8,118 @@
   <style>
     body {
       margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #ffe6f0, #ffe6cc);
-      overflow-x: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #ffecd2, #fcb69f);
+      color: #333;
     }
 
     .hero {
       text-align: center;
-      padding: 60px 20px 20px;
+      padding: 3rem 1rem;
     }
 
     h1 {
-      font-size: 3em;
-      color: #cc0066;
+      font-size: 3rem;
+      margin-bottom: 1rem;
     }
 
     p {
-      font-size: 1.3em;
-      color: #444;
-      margin-top: 10px;
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
     }
 
     .button {
       display: inline-block;
-      margin: 15px 10px;
-      padding: 12px 25px;
-      background-color: #ff3399;
+      margin: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      background-color: #ff69b4;
       color: white;
-      border: none;
-      border-radius: 25px;
       text-decoration: none;
-      font-size: 1.1em;
+      border-radius: 25px;
       transition: background-color 0.3s;
     }
 
     .button:hover {
-      background-color: #cc0066;
+      background-color: #e754a3;
     }
 
     #countdown {
-      font-size: 2em;
-      color: #99004d;
-      margin: 20px 0;
-      animation: pulse 1s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-    }
-
-    .timeline-container {
-      position: relative;
-      margin: 60px auto;
-      width: 80%;
-      max-width: 900px;
+      font-size: 2rem;
+      margin: 1rem auto 2rem;
+      font-weight: bold;
+      color: #ff1493;
     }
 
     .timeline {
       position: relative;
-      height: 6px;
-      background-color: #ff99cc;
-      margin: 50px 0;
-      border-radius: 5px;
+      max-width: 600px;
+      margin: 4rem auto;
     }
 
-    .milestone {
-      position: absolute;
-      top: -30px;
-      transform: translateX(-50%);
-      text-align: center;
-      animation: fadeInUp 2s ease forwards;
-    }
-
-    .milestone::before {
+    .timeline::after {
       content: '';
+      position: absolute;
+      width: 4px;
+      background-color: #ff69b4;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -2px;
+      animation: growLine 2s ease forwards;
+    }
+
+    @keyframes growLine {
+      from { height: 0; }
+      to { height: 100%; }
+    }
+
+    .timeline-entry {
+      padding: 1rem 2rem;
+      position: relative;
+      background-color: inherit;
+      width: 50%;
+    }
+
+    .timeline-entry::after {
+      content: ' ';
+      position: absolute;
       width: 20px;
       height: 20px;
-      background: #ff3399;
+      right: -10px;
+      background-color: white;
+      border: 4px solid #ff69b4;
+      top: 15px;
       border-radius: 50%;
-      border: 3px solid #fff;
-      display: block;
-      margin: 0 auto 10px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+      z-index: 1;
     }
 
-    .milestone p {
-      font-size: 1em;
-      margin: 0;
-      color: #333;
-      font-weight: 600;
+    .timeline-entry.left {
+      left: 0;
     }
 
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translate(-50%, 20px);
-      }
-      to {
-        opacity: 1;
-        transform: translate(-50%, 0);
-      }
+    .timeline-entry.right {
+      left: 50%;
     }
 
-    .buttons-container {
-      margin-top: 80px;
+    .timeline-entry.right::after {
+      left: -10px;
+    }
+
+    .timeline-entry h3 {
+      margin-top: 0;
+      font-size: 1.2rem;
+      color: #d63384;
+    }
+
+    .timeline-entry p {
+      margin: 0.5rem 0 0;
+    }
+
+    .buttons-bottom {
       text-align: center;
+      margin-top: 3rem;
+      margin-bottom: 2rem;
     }
   </style>
 </head>
@@ -122,27 +127,28 @@
   <div class="hero">
     <h1>Happy Birthday Leeja 🎉</h1>
     <p>Welcome to your special page!</p>
-    <div id="countdown"></div>
-
-    <!-- Roadmap Timeline -->
-    <div class="timeline-container">
-      <div class="timeline"></div>
-      <div class="milestone" style="left: 5%;">
-        <p>Birth<br/>1998</p>
+    <div id="countdown">Loading Countdown...</div>
+    
+    <div class="timeline">
+      <div class="timeline-entry left">
+        <h3>1998</h3>
+        <p>Birth</p>
       </div>
-      <div class="milestone" style="left: 35%;">
-        <p>Started Career<br/>TCS 2021</p>
+      <div class="timeline-entry right">
+        <h3>2021</h3>
+        <p>Started Career in TCS</p>
       </div>
-      <div class="milestone" style="left: 65%;">
-        <p>Friendship Started<br/>2022</p>
+      <div class="timeline-entry left">
+        <h3>2022</h3>
+        <p>Friendship Started</p>
       </div>
-      <div class="milestone" style="left: 95%;">
-        <p>Friendship<br/>Till Infinity ♾️</p>
+      <div class="timeline-entry right">
+        <h3>∞</h3>
+        <p>Friendship Lasts Forever</p>
       </div>
     </div>
 
-    <!-- Buttons at bottom -->
-    <div class="buttons-container">
+    <div class="buttons-bottom">
       <a class="button" href="memories.html">See Our Memories</a>
       <a class="button" href="message.html">A Beautiful Message</a>
     </div>
