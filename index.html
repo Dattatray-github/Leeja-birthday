@@ -9,174 +9,218 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #ffe0ec, #f7f1ff);
+      background: linear-gradient(to bottom right, #ffe3f0, #fff6f9);
       overflow-x: hidden;
     }
 
     .hero {
       text-align: center;
-      padding: 2rem;
+      padding: 30px 20px;
     }
 
     h1 {
-      font-size: 3rem;
+      font-size: 3em;
       color: #d63384;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.3em;
+      margin-bottom: 20px;
     }
 
     .cake-container {
-      margin: 2rem auto;
+      margin: 30px auto;
       width: 200px;
       position: relative;
     }
 
     .cake {
       width: 100%;
-      height: 250px;
+      height: 180px;
       background: pink;
       border-radius: 10px;
       position: relative;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      animation: bounce 2s ease-in-out infinite;
     }
 
     .candle {
       width: 10px;
       height: 40px;
-      background: white;
+      background: #fff;
       position: absolute;
-      top: -45px;
+      top: -50px;
       left: 50%;
       transform: translateX(-50%);
-      border-radius: 2px;
+      border-radius: 3px;
     }
 
     .flame {
-      position: absolute;
-      top: -15px;
-      left: 50%;
-      transform: translateX(-50%);
       width: 15px;
       height: 15px;
-      background: radial-gradient(circle, #ff9900 40%, transparent 70%);
+      background: radial-gradient(circle, #ff0, orange);
       border-radius: 50%;
-      animation: flicker 0.15s infinite;
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: flicker 0.3s infinite alternate;
     }
 
     @keyframes flicker {
-      0% { transform: translateX(-50%) scale(1); opacity: 1; }
-      50% { transform: translateX(-50%) scale(1.2); opacity: 0.8; }
-      100% { transform: translateX(-50%) scale(1); opacity: 1; }
+      from { transform: translateX(-50%) scale(1); opacity: 1; }
+      to { transform: translateX(-50%) scale(1.1); opacity: 0.7; }
     }
 
-    .roadmap {
-      margin: 4rem auto 2rem;
-      max-width: 600px;
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .timeline {
+      margin: 50px auto;
+      max-width: 700px;
       position: relative;
-      padding-left: 20px;
+      padding: 40px 20px;
     }
 
-    .roadmap::before {
+    .timeline:before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 20px;
+      left: 50%;
       width: 4px;
-      height: 100%;
-      background: #6c63ff;
-      animation: growRoad 3s ease-out forwards;
+      background: #ff69b4;
+      top: 0;
+      bottom: 0;
+      transform: translateX(-50%);
+      animation: grow-line 3s ease forwards;
     }
 
-    @keyframes growRoad {
-      0% { height: 0; }
-      100% { height: 100%; }
+    @keyframes grow-line {
+      from { height: 0; }
+      to { height: 100%; }
     }
 
-    .timeline-event {
+    .timeline-item {
       position: relative;
-      margin: 2rem 0;
-      padding-left: 2rem;
+      width: 50%;
+      padding: 20px 30px;
+      box-sizing: border-box;
     }
 
-    .timeline-event::before {
-      content: '🎯';
+    .timeline-item:nth-child(odd) {
+      left: 0;
+      text-align: right;
+    }
+
+    .timeline-item:nth-child(even) {
+      left: 50%;
+      text-align: left;
+    }
+
+    .timeline-item::before {
+      content: '';
       position: absolute;
-      left: -10px;
-      background: white;
-      border: 2px solid #6c63ff;
+      top: 30px;
+      width: 20px;
+      height: 20px;
+      background: #ff1493;
       border-radius: 50%;
-      width: 24px;
-      height: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      color: #6c63ff;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+      border: 4px solid #fff;
     }
 
-    .timeline-event h4 {
+    .timeline-item:nth-child(odd)::before {
+      right: -10px;
+    }
+
+    .timeline-item:nth-child(even)::before {
+      left: -10px;
+    }
+
+    .timeline-item h3 {
       margin: 0;
-      font-size: 1.2rem;
+      color: #c2185b;
+    }
+
+    .timeline-item p {
+      margin: 5px 0 0;
       color: #444;
     }
 
     .buttons {
+      margin-top: 60px;
       text-align: center;
-      margin-top: 4rem;
-      padding-bottom: 2rem;
     }
 
     .button {
-      display: inline-block;
-      margin: 0.5rem;
-      padding: 0.8rem 1.5rem;
-      background: #6c63ff;
+      margin: 10px;
+      padding: 12px 24px;
+      font-size: 1.1em;
+      background: #ff69b4;
       color: white;
-      border-radius: 25px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
       text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s;
+      transition: background 0.3s ease;
     }
 
     .button:hover {
-      background: #594dff;
+      background: #e91e63;
+    }
+
+    #countdown {
+      font-size: 2em;
+      margin-top: 20px;
+      color: #d63384;
     }
   </style>
 </head>
 <body>
   <div class="hero">
-    <h1>Happy Birthday Leeja 🎉</h1>
+    <h1>🎉 Happy Birthday Leeja 🎂</h1>
     <p>Welcome to your special page!</p>
 
-    <!-- 🎂 Cake with candle -->
+    <!-- 🎂 Animated Cake -->
     <div class="cake-container">
-      <div class="cake">
-        <div class="candle">
-          <div class="flame"></div>
-        </div>
+      <div class="candle">
+        <div class="flame"></div>
+      </div>
+      <div class="cake"></div>
+    </div>
+
+    <!-- ⏳ Countdown -->
+    <div id="countdown"></div>
+
+    <!-- 🛣️ Timeline -->
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>🎈 Born in 1998</h3>
+        <p>Start of a beautiful journey</p>
+      </div>
+      <div class="timeline-item">
+        <h3>💼 TCS Career Begins - 2021</h3>
+        <p>First step into the corporate world</p>
+      </div>
+      <div class="timeline-item">
+        <h3>🤝 Friendship Started - 2022</h3>
+        <p>Destined connections are made</p>
+      </div>
+      <div class="timeline-item">
+        <h3>♾️ Friendship Forever</h3>
+        <p>This bond is infinite</p>
       </div>
     </div>
 
-    <!-- 🛣️ Timeline Roadmap -->
-    <div class="roadmap">
-      <div class="timeline-event">
-        <h4>🎈 Born in 1998</h4>
-      </div>
-      <div class="timeline-event">
-        <h4>💼 Started Career at TCS in 2021</h4>
-      </div>
-      <div class="timeline-event">
-        <h4>👭 Friendship Began in 2022</h4>
-      </div>
-      <div class="timeline-event">
-        <h4>♾️ Our Friendship Will Last Till Infinity</h4>
-      </div>
-    </div>
-
-    <!-- 📍 Buttons -->
+    <!-- 🔘 Buttons -->
     <div class="buttons">
       <a class="button" href="memories.html">See Our Memories</a>
       <a class="button" href="message.html">A Beautiful Message</a>
     </div>
   </div>
+
+  <script src="countdown.js"></script>
 </body>
 </html>
