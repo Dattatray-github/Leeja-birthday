@@ -4,74 +4,77 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>A Special Message</title>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap');
+
     body {
-      background-color: #fff0f5;
-      margin: 0;
-      padding: 0;
-      font-family: 'Dancing Script', cursive;
+      background: #fffaf0;
+      font-family: 'Homemade Apple', cursive;
+      padding: 2rem;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
+      height: 100vh;
     }
 
     .message {
-      text-align: center;
-      max-width: 90%;
-      font-size: 24px;
+      max-width: 600px;
+      border: 2px dashed #a0522d;
+      padding: 2rem;
+      background: #fff;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      animation: fadeIn 1s ease-in-out;
     }
 
-    .handwriting {
-      fill: none;
-      stroke: #ff1493;
-      stroke-width: 1px;
-      stroke-dasharray: 2000;
-      stroke-dashoffset: 2000;
-      animation: draw 5s ease forwards;
+    .handwritten p {
+      font-size: 1.4rem;
+      line-height: 2.2rem;
+      white-space: pre-line;
+      border-right: 2px solid #333;
+      width: 0;
+      overflow: hidden;
+      animation: typing 6s steps(90, end), blink 0.7s step-end infinite;
     }
 
-    @keyframes draw {
-      to {
-        stroke-dashoffset: 0;
-      }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
     }
 
-    svg text {
-      font-family: 'Dancing Script', cursive;
-      font-size: 24px;
+    @keyframes blink {
+      0%, 100% { border-color: transparent; }
+      50% { border-color: #333; }
     }
 
     .button {
       display: inline-block;
-      margin-top: 30px;
-      padding: 10px 20px;
-      background-color: #ff69b4;
+      margin-top: 1.5rem;
+      padding: 0.5rem 1rem;
+      background: #a0522d;
       color: white;
       text-decoration: none;
-      border-radius: 8px;
-      font-size: 18px;
+      border-radius: 5px;
+      font-family: sans-serif;
     }
 
-    .button:hover {
-      background-color: #ff1493;
+    h2 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
     }
   </style>
 </head>
 <body>
-  <div class="message">
+  <div class="message handwritten">
     <h2>A Message Just for You ✨</h2>
+    <p>
+TCS wali dost ho tum hamari... Colleague se leke dost tak ka safar...
+Chitchat friend... Spiritual dost...
 
-    <svg width="800" height="300" viewBox="0 0 800 300">
-      <text x="10" y="40" class="handwriting">TCS wali dost ho tum hamari...</text>
-      <text x="10" y="80" class="handwriting" style="animation-delay: 0.5s;">Colleague se leke dost tak ka safar...</text>
-      <text x="10" y="120" class="handwriting" style="animation-delay: 1s;">Chitchat friend... Spiritual dost...</text>
-      <text x="10" y="180" class="handwriting" style="animation-delay: 1.5s;">Hamesha khushraho dost..</text>
-      <text x="10" y="220" class="handwriting" style="animation-delay: 2s;">Happy, healthy and wealthy raho...</text>
-      <text x="10" y="260" class="handwriting" style="animation-delay: 2.5s;">Bane raho dost hamare 💖</text>
-    </svg>
-
+Hamesha khushraho dost.. Happy, healthy and wealthy raho...
+Bane raho dost hamare
+    </p>
     <a class="button" href="index.html">Back to Home</a>
   </div>
 </body>
