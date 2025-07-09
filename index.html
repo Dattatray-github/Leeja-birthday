@@ -5,108 +5,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Leeja's Birthday</title>
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to top right, #ffdde1, #ee9ca7);
-      overflow-x: hidden;
-      font-family: 'Segoe UI', sans-serif;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 50px 20px;
-      color: #fff;
-      position: relative;
-    }
-
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-      text-shadow: 2px 2px 8px #000;
-    }
-
-    p {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 12px 25px;
-      margin: 10px;
-      background-color: #ffffff;
-      color: #e91e63;
-      text-decoration: none;
-      border-radius: 25px;
-      font-weight: bold;
-      transition: all 0.3s ease;
-    }
-
-    .button:hover {
-      background-color: #f8bbd0;
-    }
-
-    #countdown {
-      font-size: 2rem;
-      margin-top: 30px;
-      color: #fff;
-      background: rgba(0, 0, 0, 0.2);
-      display: inline-block;
-      padding: 15px 25px;
-      border-radius: 10px;
-      box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-    }
-
-    /* Balloons */
-    .balloon {
-      position: absolute;
-      bottom: -150px;
-      width: 60px;
-      height: 80px;
-      background-color: pink;
-      border-radius: 50% 50% 50% 50%;
-      animation: floatUp 10s linear infinite;
-      opacity: 0.8;
-    }
-
-    .balloon::after {
-      content: '';
-      position: absolute;
-      bottom: -20px;
-      left: 50%;
-      width: 2px;
-      height: 20px;
-      background-color: #888;
-    }
-
-    @keyframes floatUp {
-      0% {
-        transform: translateY(0) rotate(0deg);
-      }
-      100% {
-        transform: translateY(-120vh) rotate(360deg);
-      }
-    }
-
-  </style>
 </head>
 <body>
-  <div class="hero">
-    <h1>Happy Birthday Leeja 🎉</h1>
-    <p>Welcome to your special page!</p>
-    <a class="button" href="memories.html">See Our Memories</a>
-    <a class="button" href="message.html">A Beautiful Message</a>
-    <div id="countdown"></div>
-  </div>
+  <!-- Falling Balloons -->
+  <div class="balloons"></div>
 
-  <!-- Balloons -->
-  <div class="balloon" style="left: 10%; animation-delay: 0s;"></div>
-  <div class="balloon" style="left: 25%; animation-delay: 2s;"></div>
-  <div class="balloon" style="left: 40%; animation-delay: 4s;"></div>
-  <div class="balloon" style="left: 60%; animation-delay: 6s;"></div>
-  <div class="balloon" style="left: 80%; animation-delay: 8s;"></div>
+  <div class="hero">
+    <h1>🎉 Happy Birthday Leeja 🎉</h1>
+    <p>Welcome to your special page!</p>
+
+    <!-- Countdown -->
+    <div id="countdown"></div>
+
+    <!-- Cake with Candles -->
+    <div class="cake">
+      <div class="plate"></div>
+      <div class="layer layer-bottom"></div>
+      <div class="layer layer-middle"></div>
+      <div class="layer layer-top"></div>
+      <div class="icing"></div>
+      <div class="candle">
+        <div class="flame"></div>
+      </div>
+    </div>
+
+    <!-- Roadmap Timeline -->
+    <section class="timeline">
+      <h2>🎈 Journey with Leeja 🎈</h2>
+      <div class="timeline-container">
+        <div class="timeline-item">
+          <div class="circle">🎂</div>
+          <div class="text">
+            <h3>1998</h3>
+            <p>Born to shine!</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="circle">💼</div>
+          <div class="text">
+            <h3>2021</h3>
+            <p>Started career at TCS</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="circle">🤝</div>
+          <div class="text">
+            <h3>2022</h3>
+            <p>Friendship began</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="circle">♾️</div>
+          <div class="text">
+            <h3>Forever</h3>
+            <p>Our bond lasts to infinity</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Buttons moved to the end -->
+    <div class="button-container">
+      <a class="button" href="memories.html">See Our Memories</a>
+      <a class="button" href="message.html">A Beautiful Message</a>
+    </div>
+  </div>
 
   <script src="countdown.js"></script>
 </body>
