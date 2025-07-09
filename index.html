@@ -5,72 +5,178 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Leeja's Birthday</title>
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #ffe0ec, #f7f1ff);
+      overflow-x: hidden;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #d63384;
+    }
+
+    .cake-container {
+      margin: 2rem auto;
+      width: 200px;
+      position: relative;
+    }
+
+    .cake {
+      width: 100%;
+      height: 250px;
+      background: pink;
+      border-radius: 10px;
+      position: relative;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .candle {
+      width: 10px;
+      height: 40px;
+      background: white;
+      position: absolute;
+      top: -45px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    .flame {
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 15px;
+      height: 15px;
+      background: radial-gradient(circle, #ff9900 40%, transparent 70%);
+      border-radius: 50%;
+      animation: flicker 0.15s infinite;
+    }
+
+    @keyframes flicker {
+      0% { transform: translateX(-50%) scale(1); opacity: 1; }
+      50% { transform: translateX(-50%) scale(1.2); opacity: 0.8; }
+      100% { transform: translateX(-50%) scale(1); opacity: 1; }
+    }
+
+    .roadmap {
+      margin: 4rem auto 2rem;
+      max-width: 600px;
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .roadmap::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 20px;
+      width: 4px;
+      height: 100%;
+      background: #6c63ff;
+      animation: growRoad 3s ease-out forwards;
+    }
+
+    @keyframes growRoad {
+      0% { height: 0; }
+      100% { height: 100%; }
+    }
+
+    .timeline-event {
+      position: relative;
+      margin: 2rem 0;
+      padding-left: 2rem;
+    }
+
+    .timeline-event::before {
+      content: '🎯';
+      position: absolute;
+      left: -10px;
+      background: white;
+      border: 2px solid #6c63ff;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: #6c63ff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .timeline-event h4 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #444;
+    }
+
+    .buttons {
+      text-align: center;
+      margin-top: 4rem;
+      padding-bottom: 2rem;
+    }
+
+    .button {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      background: #6c63ff;
+      color: white;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .button:hover {
+      background: #594dff;
+    }
+  </style>
 </head>
 <body>
-  <!-- Falling Balloons -->
-  <div class="balloons"></div>
-
   <div class="hero">
-    <h1>🎉 Happy Birthday Leeja 🎉</h1>
+    <h1>Happy Birthday Leeja 🎉</h1>
     <p>Welcome to your special page!</p>
 
-    <!-- Countdown -->
-    <div id="countdown"></div>
-
-    <!-- Cake with Candles -->
-    <div class="cake">
-      <div class="plate"></div>
-      <div class="layer layer-bottom"></div>
-      <div class="layer layer-middle"></div>
-      <div class="layer layer-top"></div>
-      <div class="icing"></div>
-      <div class="candle">
-        <div class="flame"></div>
+    <!-- 🎂 Cake with candle -->
+    <div class="cake-container">
+      <div class="cake">
+        <div class="candle">
+          <div class="flame"></div>
+        </div>
       </div>
     </div>
 
-    <!-- Roadmap Timeline -->
-    <section class="timeline">
-      <h2>🎈 Journey with Leeja 🎈</h2>
-      <div class="timeline-container">
-        <div class="timeline-item">
-          <div class="circle">🎂</div>
-          <div class="text">
-            <h3>1998</h3>
-            <p>Born to shine!</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="circle">💼</div>
-          <div class="text">
-            <h3>2021</h3>
-            <p>Started career at TCS</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="circle">🤝</div>
-          <div class="text">
-            <h3>2022</h3>
-            <p>Friendship began</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="circle">♾️</div>
-          <div class="text">
-            <h3>Forever</h3>
-            <p>Our bond lasts to infinity</p>
-          </div>
-        </div>
+    <!-- 🛣️ Timeline Roadmap -->
+    <div class="roadmap">
+      <div class="timeline-event">
+        <h4>🎈 Born in 1998</h4>
       </div>
-    </section>
+      <div class="timeline-event">
+        <h4>💼 Started Career at TCS in 2021</h4>
+      </div>
+      <div class="timeline-event">
+        <h4>👭 Friendship Began in 2022</h4>
+      </div>
+      <div class="timeline-event">
+        <h4>♾️ Our Friendship Will Last Till Infinity</h4>
+      </div>
+    </div>
 
-    <!-- Buttons moved to the end -->
-    <div class="button-container">
+    <!-- 📍 Buttons -->
+    <div class="buttons">
       <a class="button" href="memories.html">See Our Memories</a>
       <a class="button" href="message.html">A Beautiful Message</a>
     </div>
   </div>
-
-  <script src="countdown.js"></script>
 </body>
 </html>
