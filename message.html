@@ -3,79 +3,107 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>A Special Message</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Letter</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap');
-
     body {
-      background: #fffaf0;
-      font-family: 'Homemade Apple', cursive;
-      padding: 2rem;
+      background: #0b0c10;
+      margin: 0;
+      overflow: hidden;
+      font-family: 'Dancing Script', cursive;
+      color: #fff;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      padding: 40px;
     }
 
-    .message {
-      max-width: 600px;
-      border: 2px dashed #a0522d;
-      padding: 2rem;
-      background: #fff;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    .letter {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      font-size: 1.8rem;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      border: 1px solid #ccc;
+      padding: 40px;
+      background-color: #fff8e7cc;
+      color: #000;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
       animation: fadeIn 1s ease-in-out;
     }
 
-    .handwritten p {
-      font-size: 1.4rem;
-      line-height: 2.2rem;
-      white-space: pre-line;
-      border-right: 2px solid #333;
-      width: 0;
-      overflow: hidden;
-      animation: typing 6s steps(90, end), blink 0.7s step-end infinite;
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
     }
 
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
+    .star {
+      position: absolute;
+      top: -10px;
+      width: 2px;
+      height: 60px;
+      background: linear-gradient(-45deg, #fff, transparent);
+      animation: fall linear infinite;
+      opacity: 0.8;
+      z-index: 1;
     }
 
-    @keyframes blink {
-      0%, 100% { border-color: transparent; }
-      50% { border-color: #333; }
-    }
-
-    .button {
-      display: inline-block;
-      margin-top: 1.5rem;
-      padding: 0.5rem 1rem;
-      background: #a0522d;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      font-family: sans-serif;
-    }
-
-    h2 {
-      text-align: center;
-      font-size: 1.8rem;
-      margin-bottom: 1.5rem;
+    @keyframes fall {
+      0% {
+        transform: translateY(0) translateX(0) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) translateX(50px) rotate(45deg);
+        opacity: 0;
+      }
     }
   </style>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="message handwritten">
-    <h2>A Message Just for You ✨</h2>
-    <p>
-TCS wali dost ho tum hamari... Colleague se leke dost tak ka safar...
-Chitchat friend... Spiritual dost...
+  <div class="letter" id="letterText"></div>
 
-Hamesha khushraho dost.. Happy, healthy and wealthy raho...
-Bane raho dost hamare
-    </p>
-    <a class="button" href="index.html">Back to Home</a>
-  </div>
+  <script>
+    const text = `Dear Best Friend,
+
+I just wanted to say how much you mean to me. Every memory we've created together is a treasure I’ll never forget.
+
+Through laughter, tears, and endless conversations, you've been by my side. Thank you for being the wonderful person you are.
+
+Forever grateful,
+Your Friend 💖`;
+
+    const element = document.getElementById("letterText");
+    let index = 0;
+
+    function typeWriter() {
+      if (index < text.length) {
+        element.innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeWriter, 50);
+      }
+    }
+
+    // Start the animation
+    typeWriter();
+
+    // Create falling stars
+    function createStar() {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.left = `${Math.random() * 100}vw`;
+      star.style.animationDuration = `${2 + Math.random() * 3}s`;
+      document.body.appendChild(star);
+      
+      setTimeout(() => {
+        star.remove();
+      }, 5000);
+    }
+
+    setInterval(createStar, 200); // create a new star every 200ms
+  </script>
 </body>
 </html>
