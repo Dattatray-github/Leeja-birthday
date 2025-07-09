@@ -9,38 +9,34 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to bottom right, #fff1f9, #ffe4ec);
+      background: linear-gradient(to right, #fceabb, #f8b500);
       color: #333;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
     }
 
     .hero {
       text-align: center;
-      padding: 40px 20px 20px;
+      padding: 60px 20px 20px;
     }
 
     h1 {
-      font-size: 2.8rem;
-      color: #ff4081;
+      font-size: 3rem;
+      margin-bottom: 10px;
     }
 
     p {
       font-size: 1.2rem;
-      margin-top: 10px;
+      margin-bottom: 30px;
     }
 
     .button {
       display: inline-block;
-      margin: 10px 10px 0;
-      padding: 12px 24px;
-      font-size: 1rem;
+      margin: 10px;
+      padding: 15px 30px;
       background-color: #ff4081;
       color: white;
-      border: none;
-      border-radius: 25px;
       text-decoration: none;
+      font-weight: bold;
+      border-radius: 25px;
       transition: background-color 0.3s;
     }
 
@@ -49,96 +45,138 @@
     }
 
     #countdown {
-      font-size: 1.5rem;
-      margin-top: 20px;
-      color: #d81b60;
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 20px 0;
+      background: white;
+      color: #222;
+      padding: 10px 20px;
+      display: inline-block;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
     }
 
-    .timeline {
+    .timeline-container {
       position: relative;
+      max-width: 600px;
       margin: 60px auto;
       padding-left: 30px;
-      max-width: 600px;
-      border-left: 4px solid #ff4081;
     }
 
-    .timeline::before {
+    .timeline-container::before {
       content: '';
       position: absolute;
+      left: 20px;
       top: 0;
-      left: -8px;
-      width: 16px;
-      height: 16px;
+      width: 4px;
+      height: 100%;
       background: #ff4081;
-      border-radius: 50%;
+      animation: growLine 2s ease-out forwards;
     }
 
-    .timeline-event {
+    @keyframes growLine {
+      from { height: 0; }
+      to { height: 100%; }
+    }
+
+    .timeline-item {
       position: relative;
-      margin-bottom: 40px;
+      margin-bottom: 50px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.6s ease forwards;
     }
 
-    .timeline-event::before {
-      content: '';
+    .timeline-item:nth-child(1) { animation-delay: 0.3s; }
+    .timeline-item:nth-child(2) { animation-delay: 0.6s; }
+    .timeline-item:nth-child(3) { animation-delay: 0.9s; }
+    .timeline-item:nth-child(4) { animation-delay: 1.2s; }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .timeline-dot {
       position: absolute;
-      left: -12px;
+      left: -5px;
       top: 0;
-      width: 16px;
-      height: 16px;
-      background: white;
-      border: 4px solid #ff4081;
+      width: 15px;
+      height: 15px;
+      background-color: #ff4081;
       border-radius: 50%;
+      box-shadow: 0 0 10px rgba(255,64,129,0.4);
     }
 
-    .timeline-event h3 {
-      margin: 0 0 5px;
-      font-size: 1.3rem;
-      color: #c2185b;
-    }
-
-    .timeline-event p {
-      margin: 0;
+    .timeline-text {
+      margin-left: 30px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 15px 20px;
+      border-radius: 10px;
       font-size: 1rem;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
     }
 
-    .buttons-container {
+    .bottom-buttons {
       text-align: center;
-      margin-top: auto;
-      margin-bottom: 30px;
+      padding: 40px 20px;
     }
   </style>
 </head>
 <body>
+
   <div class="hero">
     <h1>Happy Birthday Leeja 🎉</h1>
     <p>Welcome to your special page!</p>
-    <div id="countdown"></div>
+    <div id="countdown">Loading countdown...</div>
+  </div>
 
-    <div class="timeline">
-      <div class="timeline-event">
-        <h3>1998</h3>
-        <p>Born into this beautiful world 🎈</p>
-      </div>
-      <div class="timeline-event">
-        <h3>2021</h3>
-        <p>Started career at TCS 👩‍💻</p>
-      </div>
-      <div class="timeline-event">
-        <h3>2022</h3>
-        <p>Friendship started 💖</p>
-      </div>
-      <div class="timeline-event">
-        <h3>∞</h3>
-        <p>Friendship will last forever ♾️</p>
-      </div>
+  <div class="timeline-container">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-text"><strong>1998:</strong> Born to make the world brighter 🌟</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-text"><strong>2021:</strong> Started career in TCS 🚀</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-text"><strong>2022:</strong> A beautiful friendship began 🤝</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-text"><strong>Infinity:</strong> This bond lasts forever ♾️</div>
     </div>
   </div>
 
-  <div class="buttons-container">
+  <div class="bottom-buttons">
     <a class="button" href="memories.html">See Our Memories</a>
     <a class="button" href="message.html">A Beautiful Message</a>
   </div>
 
-  <script src="countdown.js"></script>
+  <script>
+    // Countdown Timer
+    const countdownElement = document.getElementById("countdown");
+    const birthday = new Date("2025-07-10T00:00:00").getTime();
+
+    const x = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = birthday - now;
+
+      if (distance < 0) {
+        clearInterval(x);
+        countdownElement.innerHTML = "🎂 It's Your Day!";
+      } else {
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      }
+    }, 1000);
+  </script>
 </body>
 </html>
