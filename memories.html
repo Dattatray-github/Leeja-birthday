@@ -4,67 +4,186 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Memories with Leeja</title>
-  <link rel="stylesheet" href="styles.css" />
-<style>
-  .slider {
-    width: 400px;
-    overflow: hidden;
-    position: relative;
-  }
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f3f3f3;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
 
-  .slide {
-    display: none;
-    text-align: center;
-  }
+    h2 {
+      color: #333;
+    }
 
-  .slide img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-  }
+    .slider-container {
+      position: relative;
+      display: inline-block;
+    }
 
-  .slide img {
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
+    .main-image {
+      width: 400px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      margin-bottom: 15px;
+    }
 
-  .caption {
-    font-style: italic;
-    color: #444;
-    margin-top: 10px;
-  }
+    .caption {
+      font-style: italic;
+      margin: 10px auto 30px;
+      color: #555;
+      max-width: 500px;
+    }
 
-  .slide.active {
-    display: block;
-  }
-</style>
-  
+    .thumbnails {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .thumbnail {
+      width: 80px;
+      height: 50px;
+      object-fit: cover;
+      border: 2px solid transparent;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: border 0.3s;
+    }
+
+    .thumbnail.active {
+      border: 2px solid #0077cc;
+    }
+
+    .nav-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 20px;
+      border-radius: 50%;
+    }
+
+    .nav-button:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .prev {
+      left: -40px;
+    }
+
+    .next {
+      right: -40px;
+    }
+
+    .button {
+      margin: 30px 10px;
+      padding: 10px 20px;
+      background-color: #0077cc;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+
+    .button:hover {
+      background-color: #005fa3;
+    }
+
+    @media (max-width: 480px) {
+      .main-image {
+        width: 90%;
+      }
+
+      .nav-button {
+        top: 45%;
+        padding: 8px 12px;
+        font-size: 18px;
+      }
+
+      .prev { left: -30px; }
+      .next { right: -30px; }
+    }
+  </style>
 </head>
 <body>
-  <div class="gallery">
-    <h2>Sweet Memories 📸</h2>
+
+  <h2>Sweet Memories 📸</h2>
+
+  <div class="slider-container">
+    <button class="nav-button prev" onclick="prevSlide()">&#10094;</button>
+
+    <img id="mainImage" class="main-image" src="Leeja_LWDMail.jpg" alt="Memory">
     
-
-<div class="slider">
-  <div class="slide active">
-    <img src="Leeja_LWDMail.jpg" alt="LWD Email Memory">
-    <p class="caption">Grateful for the memories and the journey we've shared.</p>
-  </div>
-  <div class="slide">
-    <img src="Leeja_fairwellEmail.jpg" alt="Farewell Email">
-    <p class="caption">Farewell, but never goodbye — here's to new beginnings!</p>
-  </div>
-  <div class="slide">
-    <img src="Leeja_teamCall.jpg" alt="Team Call">
-    <p class="caption">Teamwork, memories, and smiles — I’ll carry them all with me.</p>
-  </div>
+    <button class="nav-button next" onclick="nextSlide()">&#10095;</button>
   </div>
 
+  <p id="caption" class="caption">Grateful for the memories and the journey we've shared.</p>
 
+  <div class="thumbnails">
+    <img src="Leeja_LWDMail.jpg" class="thumbnail active" onclick="changeSlide(0)" alt="Thumb 1">
+    <img src="Leeja_fairwellEmail.jpg" class="thumbnail" onclick="changeSlide(1)" alt="Thumb 2">
+    <img src="Leeja_teamCall.jpg" class="thumbnail" onclick="changeSlide(2)" alt="Thumb 3">
+  </div>
 
+  <div>
     <a class="button" href="index.html">Back to Home</a>
     <a class="button" href="message.html">A Beautiful Message</a>
   </div>
-  <!--script src="slider.js"></script-->
+
+  <script>
+    const images = [
+      {
+        src: "Leeja_LWDMail.jpg",
+        caption: "Grateful for the memories and the journey we've shared."
+      },
+      {
+        src: "Leeja_fairwellEmail.jpg",
+        caption: "Farewell, but never goodbye — here's to new beginnings!"
+      },
+      {
+        src: "Leeja_teamCall.jpg",
+        caption: "Teamwork, memories, and smiles — I’ll carry them all with me."
+      }
+    ];
+
+    let currentSlide = 0;
+
+    function updateSlider() {
+      const mainImage = document.getElementById("mainImage");
+      const caption = document.getElementById("caption");
+      const thumbnails = document.querySelectorAll(".thumbnail");
+
+      mainImage.src = images[currentSlide].src;
+      caption.textContent = images[currentSlide].caption;
+
+      thumbnails.forEach((thumb, i) => {
+        thumb.classList.toggle("active", i === currentSlide);
+      });
+    }
+
+    function changeSlide(index) {
+      currentSlide = index;
+      updateSlider();
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % images.length;
+      updateSlider();
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + images.length) % images.length;
+      updateSlider();
+    }
+  </script>
+
 </body>
 </html>
