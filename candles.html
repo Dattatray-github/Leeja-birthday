@@ -3,146 +3,187 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy Birthday Leeja!</title>
+  <title>Happy Birthday Leeja</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(#ffdde1, #ee9ca7);
+      background: radial-gradient(circle, #ffd6e0 0%, #fff 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 2rem;
-      text-align: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
     }
 
     h1 {
       font-size: 2.5rem;
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-      color: #fff;
-      text-shadow: 1px 1px 5px #000;
+      color: #e91e63;
+      text-align: center;
+      margin-bottom: 10px;
     }
 
-    #countdown {
-      font-size: 2.5rem;
-      font-weight: bold;
+    .glow-heart {
+      font-size: 1.3rem;
       color: #fff;
-      margin-bottom: 1.5rem;
+      padding: 10px 20px;
+      border-radius: 50px;
+      background: #e91e63;
+      box-shadow: 0 0 20px #e91e63;
+      animation: pulse 2s infinite;
+      margin-bottom: 20px;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 0 15px #e91e63;
+      }
+      50% {
+        box-shadow: 0 0 30px #e91e63;
+      }
     }
 
     .cake {
-      position: relative;
       width: 100%;
       max-width: 300px;
-      margin: 2rem auto;
+      position: relative;
+      margin-bottom: 20px;
     }
 
     .candle {
-      width: 10px;
-      height: 30px;
-      background: #fdd835;
-      margin: 0 5px;
-      display: inline-block;
-      border-radius: 2px;
-      position: relative;
+      position: absolute;
+      width: 8px;
+      height: 40px;
+      background: #ff4081;
+      border-radius: 5px;
+      top: 20px;
     }
 
     .flame {
-      width: 12px;
-      height: 12px;
-      background: orange;
+      width: 10px;
+      height: 10px;
+      background: gold;
       border-radius: 50%;
-      position: absolute;
-      top: -15px;
-      left: -1px;
-      animation: flicker 1s infinite;
-      display: none;
+      margin: 0 auto;
+      animation: flicker 0.3s infinite alternate;
     }
 
     @keyframes flicker {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
+      from { transform: scale(1); opacity: 1; }
+      to { transform: scale(1.3); opacity: 0.8; }
     }
 
-    #message {
-      font-size: 1.4rem;
-      color: #fff;
-      margin-top: 2rem;
+    .candle:nth-child(1) { left: 20%; }
+    .candle:nth-child(2) { left: 35%; }
+    .candle:nth-child(3) { left: 50%; }
+    .candle:nth-child(4) { left: 65%; }
+    .candle:nth-child(5) { left: 80%; }
+
+    .cake-img {
+      width: 100%;
     }
 
-    audio {
-      display: none;
+    .btn-blow {
+      background: #e91e63;
+      color: white;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 0 10px #e91e63;
+      transition: transform 0.2s ease;
     }
 
-    .fireworks {
-      display: none;
+    .btn-blow:hover {
+      transform: scale(1.05);
+    }
+
+    canvas {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('https://i.ibb.co/3kqGLnC/fireworks.gif') center/cover no-repeat;
-      z-index: 999;
+      pointer-events: none;
+      z-index: 10;
     }
 
     @media (max-width: 600px) {
-      h1 {
-        font-size: 1.8rem;
-      }
-      #countdown {
-        font-size: 2rem;
-      }
-      .cake {
-        max-width: 90%;
-      }
+      h1 { font-size: 2rem; }
+      .glow-heart { font-size: 1rem; padding: 8px 16px; }
+      .cake { max-width: 220px; }
     }
   </style>
 </head>
 <body>
+  <h1>🎂 Happy Birthday Leeja 🎉</h1>
+  <div class="glow-heart">Wishing you endless joy, laughter, and love!</div>
 
-  <h1>🎉 Happy Birthday Leeja! 🎉</h1>
-  <div id="countdown">3</div>
-
-  <div class="cake" id="cake" style="display: none;">
+  <div class="cake">
     <div class="candle"><div class="flame"></div></div>
     <div class="candle"><div class="flame"></div></div>
     <div class="candle"><div class="flame"></div></div>
     <div class="candle"><div class="flame"></div></div>
     <div class="candle"><div class="flame"></div></div>
+    <img src="https://i.imgur.com/O7W0EbD.png" alt="Cake" class="cake-img" />
   </div>
 
-  <div id="message" style="display:none;">Wishing you all the joy and love, Leeja! 🎂✨</div>
+  <button class="btn-blow" onclick="blowCandles()">🎈 Click to Blow Candles</button>
 
-  <div class="fireworks" id="fireworks"></div>
+  <canvas id="fireworks"></canvas>
 
-  <audio id="birthdayAudio" src="happy-birthday.mp3"></audio>
+  <audio id="birthdaySong" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
 
   <script>
-    let count = 3;
-    const countdownEl = document.getElementById("countdown");
-    const cakeEl = document.getElementById("cake");
-    const messageEl = document.getElementById("message");
-    const audioEl = document.getElementById("birthdayAudio");
-    const fireworksEl = document.getElementById("fireworks");
+    function blowCandles() {
+      document.querySelectorAll(".flame").forEach(f => f.style.display = "none");
+      document.getElementById("birthdaySong").play();
+      launchFireworks();
+    }
 
-    const timer = setInterval(() => {
-      countdownEl.textContent = count;
-      count--;
-      if (count < 0) {
-        clearInterval(timer);
-        countdownEl.style.display = "none";
-        cakeEl.style.display = "block";
-        document.querySelectorAll(".flame").forEach(f => f.style.display = "block");
-        messageEl.style.display = "block";
-        fireworksEl.style.display = "block";
-        audioEl.play().catch(() => {
-          messageEl.textContent += "\n(Audio not supported or blocked)";
+    // Simple Fireworks Effect
+    const canvas = document.getElementById('fireworks');
+    const ctx = canvas.getContext('2d');
+    let W = canvas.width = window.innerWidth;
+    let H = canvas.height = window.innerHeight;
+    let particles = [];
+
+    function launchFireworks() {
+      for (let i = 0; i < 100; i++) {
+        particles.push({
+          x: W / 2,
+          y: H / 2,
+          radius: Math.random() * 4 + 1,
+          color: `hsl(${Math.random() * 360}, 100%, 50%)`,
+          angle: Math.random() * 2 * Math.PI,
+          speed: Math.random() * 10 + 2,
+          alpha: 1
         });
       }
-    }, 1000);
-  </script>
+      animate();
+    }
 
+    function animate() {
+      ctx.clearRect(0, 0, W, H);
+      particles.forEach((p, i) => {
+        p.x += Math.cos(p.angle) * p.speed;
+        p.y += Math.sin(p.angle) * p.speed;
+        p.alpha -= 0.02;
+
+        ctx.globalAlpha = p.alpha;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2, false);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+        if (p.alpha <= 0) particles.splice(i, 1);
+      });
+      if (particles.length > 0) requestAnimationFrame(animate);
+    }
+
+    window.addEventListener("resize", () => {
+      W = canvas.width = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    });
+  </script>
 </body>
 </html>
