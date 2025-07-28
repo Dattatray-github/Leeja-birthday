@@ -1,235 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Happy Birthday Leeja!</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Leeja 🎂</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      background: #000;
-      color: #fff;
-      text-align: center;
-      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      font-family: 'Pacifico', cursive;
+      background: linear-gradient(to bottom, #fddde6, #fff);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      min-height: 100vh;
       overflow-x: hidden;
     }
 
     h1 {
       margin-top: 20px;
-      font-size: 2.5em;
+      color: #d6336c;
+      font-size: 2.5rem;
+      text-align: center;
     }
 
-    .cake-container {
-      position: relative;
-      margin-top: 20px;
+    .countdown {
+      font-size: 2rem;
+      margin: 20px 0;
+      color: #333;
     }
 
     .cake {
-      width: 200px;
-      height: 120px;
-      background: pink;
-      margin: 0 auto;
-      border-radius: 15px;
+      position: relative;
+      width: 90%;
+      max-width: 400px;
+      margin: 20px auto;
+    }
+
+    .cake-body {
+      width: 100%;
+      height: 200px;
+      background: #ff7b7b;
+      border-radius: 10px;
       position: relative;
     }
 
     .candle {
-      width: 10px;
-      height: 40px;
+      width: 15px;
+      height: 60px;
       background: #fff;
-      margin: 0 10px;
-      display: inline-block;
-      position: relative;
-      top: -40px;
+      position: absolute;
+      top: -60px;
+      border-radius: 3px;
+      left: calc(50% - 7.5px);
       cursor: pointer;
     }
 
+    .candle:nth-child(1) { left: 20%; }
+    .candle:nth-child(2) { left: 35%; }
+    .candle:nth-child(3) { left: 50%; }
+    .candle:nth-child(4) { left: 65%; }
+    .candle:nth-child(5) { left: 80%; }
+
     .flame {
       width: 10px;
-      height: 15px;
-      background: yellow;
-      border-radius: 50%;
+      height: 20px;
+      background: orange;
+      border-radius: 50% 50% 50% 50%;
       position: absolute;
-      top: -15px;
-      left: 0;
-      right: 0;
-      margin: auto;
-      animation: flicker 0.2s infinite;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
       display: none;
+      animation: flicker 0.3s infinite;
     }
 
     @keyframes flicker {
-      0% { transform: scale(1); opacity: 0.8; }
-      50% { transform: scale(1.2); opacity: 1; }
-      100% { transform: scale(1); opacity: 0.8; }
-    }
-
-    .leeja-photo {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      margin-top: 20px;
-      border: 4px solid #fff;
-      object-fit: cover;
-    }
-
-    .countdown {
-      font-size: 3em;
-      margin-top: 30px;
-      display: none;
+      0% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.1); }
+      100% { transform: translateX(-50%) scale(1); }
     }
 
     .fireworks {
       position: fixed;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.8);
       top: 0;
       left: 0;
-      display: none;
+      pointer-events: none;
+      background: transparent;
       z-index: 999;
     }
 
-    .message {
-      font-size: 2em;
-      margin-top: 20px;
-      display: none;
-    }
-
-    .back-home {
-      margin-top: 40px;
-      padding: 10px 20px;
-      font-size: 1em;
-      background-color: #ff4081;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-
     canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    audio {
       display: none;
-      z-index: 1000;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .cake-body {
+        height: 150px;
+      }
+
+      .candle {
+        height: 50px;
+      }
     }
   </style>
 </head>
 <body>
+  <h1>Happy Birthday Leeja 🎉</h1>
+  <div class="countdown">3</div>
 
-  <h1>Click to Light the Candles 🕯️</h1>
-  
-  <img src="Leeja2.jpg" alt="Leeja Photo" class="leeja-photo">
-
-  <div class="cake-container">
-    <div class="cake">
-      <div class="candle" onclick="lightCandle(this)">
-        <div class="flame"></div>
-      </div>
-      <div class="candle" onclick="lightCandle(this)">
-        <div class="flame"></div>
-      </div>
-      <div class="candle" onclick="lightCandle(this)">
-        <div class="flame"></div>
-      </div>
-      <div class="candle" onclick="lightCandle(this)">
-        <div class="flame"></div>
-      </div>
-      <div class="candle" onclick="lightCandle(this)">
-        <div class="flame"></div>
-      </div>
-    </div>
+  <div class="cake" id="cake" style="display: none;">
+    <div class="cake-body"></div>
+    <div class="candle"><div class="flame"></div></div>
+    <div class="candle"><div class="flame"></div></div>
+    <div class="candle"><div class="flame"></div></div>
+    <div class="candle"><div class="flame"></div></div>
+    <div class="candle"><div class="flame"></div></div>
   </div>
 
-  <div class="countdown" id="countdown">3</div>
-
-  <div class="fireworks" id="fireworks">
+  <div class="fireworks" id="fireworks" style="display: none;">
     <canvas id="canvas"></canvas>
   </div>
 
-  <div class="message" id="message">🎉 Happy Birthday Leeja! 🎉</div>
-
-  <button class="back-home" onclick="location.href='index.html'">Back to Home</button>
-
-  <audio id="birthdaySong" src="happy_birthday.mp3"></audio>
+  <audio id="birthdayAudio" controls autoplay loop>
+    <source src="happy-birthday.mp3" type="audio/mpeg">
+    Your browser does not support the audio tag.
+  </audio>
 
   <script>
-    let candlesLit = 0;
+    // Countdown logic
+    let count = 3;
+    const countdown = document.querySelector(".countdown");
+    const cake = document.getElementById("cake");
 
-    function lightCandle(candle) {
-      const flame = candle.querySelector('.flame');
-      if (!flame.style.display || flame.style.display === "none") {
-        flame.style.display = "block";
-        candlesLit++;
+    const interval = setInterval(() => {
+      count--;
+      countdown.textContent = count > 0 ? count : "Blow the candles!";
+      if (count === 0) {
+        clearInterval(interval);
+        countdown.style.display = "none";
+        cake.style.display = "block";
       }
+    }, 1000);
 
-      if (candlesLit === 5) {
-        startCountdown();
-      }
-    }
+    // Candle click lighting
+    const candles = document.querySelectorAll(".candle");
+    let litCount = 0;
 
-    function startCountdown() {
-      const countdown = document.getElementById("countdown");
-      let num = 3;
-      countdown.innerText = num;
-      countdown.style.display = "block";
-
-      const interval = setInterval(() => {
-        num--;
-        if (num > 0) {
-          countdown.innerText = num;
-        } else {
-          clearInterval(interval);
-          countdown.style.display = "none";
-          showFireworks();
+    candles.forEach(candle => {
+      candle.addEventListener("click", () => {
+        const flame = candle.querySelector(".flame");
+        if (!flame.style.display || flame.style.display === "none") {
+          flame.style.display = "block";
+          litCount++;
+          if (litCount === candles.length) {
+            triggerFireworks();
+          }
         }
-      }, 1000);
-    }
+      });
+    });
 
-    function showFireworks() {
-      const fireworks = document.getElementById("fireworks");
+    // Fireworks effect
+    function triggerFireworks() {
+      document.getElementById("fireworks").style.display = "block";
       const canvas = document.getElementById("canvas");
       const ctx = canvas.getContext("2d");
 
-      fireworks.style.display = "block";
-      canvas.style.display = "block";
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
 
-      const colors = ["#ff0", "#f0f", "#0ff", "#f00", "#0f0", "#00f"];
-      const particles = [];
+      let particles = [];
 
-      for (let i = 0; i < 100; i++) {
-        particles.push({
-          x: canvas.width / 2,
-          y: canvas.height / 2,
-          speedX: (Math.random() - 0.5) * 8,
-          speedY: (Math.random() - 0.5) * 8,
-          color: colors[Math.floor(Math.random() * colors.length)],
-          size: Math.random() * 5 + 2
-        });
+      function Particle(x, y) {
+        this.x = x;
+        this.y = y;
+        this.radius = Math.random() * 4 + 1;
+        this.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        this.speedX = Math.random() * 6 - 3;
+        this.speedY = Math.random() * 6 - 3;
+        this.life = 100;
       }
 
       function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        for (let p of particles) {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        particles.forEach((p, i) => {
           p.x += p.speedX;
           p.y += p.speedY;
-          ctx.fillStyle = p.color;
+          p.life--;
           ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
           ctx.fill();
-        }
+          if (p.life <= 0) particles.splice(i, 1);
+        });
         requestAnimationFrame(animate);
       }
 
+      for (let i = 0; i < 100; i++) {
+        particles.push(new Particle(canvas.width / 2, canvas.height / 2));
+      }
+
       animate();
-
-      document.getElementById("message").style.display = "block";
-      document.getElementById("birthdaySong").play();
     }
-  </script>
 
+    // Auto-play music when page becomes interactive (browser security)
+    document.body.addEventListener("click", () => {
+      document.getElementById("birthdayAudio").play();
+    }, { once: true });
+  </script>
 </body>
 </html>
