@@ -77,6 +77,28 @@
         opacity: 0;
       }
     }
+.buttons {
+  margin-top: 2rem;
+  text-align: center;
+  z-index: 2;
+}
+
+.buttons a {
+  display: inline-block;
+  background-color: #e91e63;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1.6rem;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.buttons a:hover {
+  background-color: #d81b60;
+}
+    
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 </head>
@@ -91,7 +113,13 @@ I just wanted to say how much you mean to me. Every memory we've created togethe
 Through laughter, tears, and endless conversations, you've been by my side. Thank you for being the wonderful person you are.
 
 Forever grateful,`;
-    const signature = `<div class="signature">Your Friend 💖</div>`;
+
+    const signature = `
+      <div class="signature">Your Friend 💖</div>
+      <div class="buttons">
+        <a href="candles.html">Light your Birthday Candles🍰</a>
+      </div>
+    `;
 
     const element = document.getElementById("letterText");
     let index = 0;
@@ -125,9 +153,6 @@ Forever grateful,`;
     setInterval(createStar, 250);
   </script>
   
-  <!-- Navigation Buttons -->
-  <div class="buttons">
-    <a href="candles.html">Light your Cake 🍰</a>
-  </div>
+
 </body>
 </html>
