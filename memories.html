@@ -111,6 +111,31 @@
       .prev { left: -30px; }
       .next { right: -30px; }
     }
+
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: #0077cc;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 16px;
+  min-width: 140px;
+  text-align: center;
+}
+
+.button:hover {
+  background-color: #005fa3;
+}
+    
   </style>
 </head>
 <body>
@@ -132,11 +157,11 @@
     <img src="Leeja_fairwellEmail.jpg" class="thumbnail" onclick="changeSlide(1)" alt="Thumb 2">
     <img src="Leeja_teamCall.jpg" class="thumbnail" onclick="changeSlide(2)" alt="Thumb 3">
   </div>
-
-  <div>
-    <a class="button" href="index.html">Back to Home</a>
-    <a class="button" href="message.html">A Beautiful Message</a>
-  </div>
+<div class="buttons">
+  <a class="button" href="index.html">Back to Home</a>
+  <a class="button" href="message.html">Message for you</a>
+</div>
+  
 
   <script>
     const images = [
