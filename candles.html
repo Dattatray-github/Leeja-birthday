@@ -3,196 +3,146 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy Birthday Leeja</title>
+  <title>Happy Birthday Leeja!</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to top right, #ffe0f0, #fff3fc);
-      overflow-x: hidden;
+      background: linear-gradient(#ffdde1, #ee9ca7);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
       text-align: center;
     }
 
     h1 {
-      margin-top: 30px;
-      font-size: 2.5em;
-      color: #d63384;
+      font-size: 2.5rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      color: #fff;
+      text-shadow: 1px 1px 5px #000;
     }
 
-    .cake-container {
-      position: relative;
-      margin: 50px auto 20px;
-      width: 300px;
-      height: 200px;
+    #countdown {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #fff;
+      margin-bottom: 1.5rem;
     }
 
     .cake {
-      width: 100%;
-      height: 100px;
-      background: #ffb3c6;
-      border-radius: 10px;
       position: relative;
-      margin-top: 100px;
+      width: 100%;
+      max-width: 300px;
+      margin: 2rem auto;
     }
 
     .candle {
       width: 10px;
-      height: 40px;
-      background: #fff;
-      position: absolute;
-      bottom: 100%;
+      height: 30px;
+      background: #fdd835;
+      margin: 0 5px;
+      display: inline-block;
       border-radius: 2px;
-      cursor: pointer;
+      position: relative;
     }
 
-    .candle::after {
-      content: '';
+    .flame {
+      width: 12px;
+      height: 12px;
+      background: orange;
+      border-radius: 50%;
       position: absolute;
       top: -15px;
-      left: -5px;
-      width: 20px;
-      height: 20px;
-      background: url('https://upload.wikimedia.org/wikipedia/commons/3/36/Emoji_u1f525.svg') no-repeat center;
-      background-size: contain;
+      left: -1px;
+      animation: flicker 1s infinite;
       display: none;
     }
 
-    .candle.lit::after {
-      display: block;
+    @keyframes flicker {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
     }
 
-    /* Position candles evenly */
-    .candle:nth-child(1) { left: 20%; }
-    .candle:nth-child(2) { left: 35%; }
-    .candle:nth-child(3) { left: 50%; }
-    .candle:nth-child(4) { left: 65%; }
-    .candle:nth-child(5) { left: 80%; }
-
-    .countdown {
-      font-size: 3em;
-      margin-top: 20px;
-      color: #333;
-      display: none;
+    #message {
+      font-size: 1.4rem;
+      color: #fff;
+      margin-top: 2rem;
     }
 
-    .message {
-      font-size: 2em;
-      margin-top: 20px;
-      color: #ff4081;
+    audio {
       display: none;
     }
 
     .fireworks {
+      display: none;
       position: fixed;
       top: 0;
       left: 0;
-      pointer-events: none;
       width: 100%;
       height: 100%;
-      background: url('https://media.giphy.com/media/3oEjHWpiVIOGXT5lVu/giphy.gif') center/cover no-repeat;
-      display: none;
-      z-index: 10;
-    }
-
-    .btn-home {
-      margin: 30px auto;
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #ff69b4;
-      color: white;
-      text-decoration: none;
-      border-radius: 20px;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-
-    .btn-home:hover {
-      background-color: #e055a3;
+      background: url('https://i.ibb.co/3kqGLnC/fireworks.gif') center/cover no-repeat;
+      z-index: 999;
     }
 
     @media (max-width: 600px) {
       h1 {
-        font-size: 1.8em;
+        font-size: 1.8rem;
       }
-
-      .cake-container {
-        width: 220px;
+      #countdown {
+        font-size: 2rem;
       }
-
-      .candle {
-        height: 30px;
-      }
-
-      .countdown {
-        font-size: 2em;
-      }
-
-      .message {
-        font-size: 1.5em;
+      .cake {
+        max-width: 90%;
       }
     }
   </style>
 </head>
 <body>
 
-  <h1>Happy Birthday Leeja 🎉</h1>
+  <h1>🎉 Happy Birthday Leeja! 🎉</h1>
+  <div id="countdown">3</div>
 
-  <div class="cake-container">
-    <div class="cake">
-      <div class="candle"></div>
-      <div class="candle"></div>
-      <div class="candle"></div>
-      <div class="candle"></div>
-      <div class="candle"></div>
-    </div>
+  <div class="cake" id="cake" style="display: none;">
+    <div class="candle"><div class="flame"></div></div>
+    <div class="candle"><div class="flame"></div></div>
+    <div class="candle"><div class="flame"></div></div>
+    <div class="candle"><div class="flame"></div></div>
+    <div class="candle"><div class="flame"></div></div>
   </div>
 
-  <div class="countdown" id="countdown"></div>
-  <div class="message" id="message">🎂 Make a wish and blow the candles! 🎂</div>
+  <div id="message" style="display:none;">Wishing you all the joy and love, Leeja! 🎂✨</div>
+
   <div class="fireworks" id="fireworks"></div>
 
-  <a class="btn-home" href="index.html">Back to Home</a>
-
-  <audio id="music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+  <audio id="birthdayAudio" src="happy-birthday.mp3"></audio>
 
   <script>
-    const candles = document.querySelectorAll('.candle');
-    let litCount = 0;
+    let count = 3;
+    const countdownEl = document.getElementById("countdown");
+    const cakeEl = document.getElementById("cake");
+    const messageEl = document.getElementById("message");
+    const audioEl = document.getElementById("birthdayAudio");
+    const fireworksEl = document.getElementById("fireworks");
 
-    candles.forEach(candle => {
-      candle.addEventListener('click', () => {
-        if (!candle.classList.contains('lit')) {
-          candle.classList.add('lit');
-          litCount++;
-        }
-
-        if (litCount === candles.length) {
-          startCountdown();
-        }
-      });
-    });
-
-    function startCountdown() {
-      const countdown = document.getElementById('countdown');
-      let counter = 3;
-      countdown.style.display = 'block';
-
-      const interval = setInterval(() => {
-        countdown.textContent = counter;
-        counter--;
-        if (counter < 0) {
-          clearInterval(interval);
-          countdown.style.display = 'none';
-          showMessage();
-        }
-      }, 1000);
-    }
-
-    function showMessage() {
-      document.getElementById('message').style.display = 'block';
-      document.getElementById('fireworks').style.display = 'block';
-      document.getElementById('music').play();
-    }
+    const timer = setInterval(() => {
+      countdownEl.textContent = count;
+      count--;
+      if (count < 0) {
+        clearInterval(timer);
+        countdownEl.style.display = "none";
+        cakeEl.style.display = "block";
+        document.querySelectorAll(".flame").forEach(f => f.style.display = "block");
+        messageEl.style.display = "block";
+        fireworksEl.style.display = "block";
+        audioEl.play().catch(() => {
+          messageEl.textContent += "\n(Audio not supported or blocked)";
+        });
+      }
+    }, 1000);
   </script>
+
 </body>
 </html>
