@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Memories with Leeja</title>
   <style>
+
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f3f3f3;
-      text-align: center;
       margin: 0;
-      padding: 20px;
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(to bottom, #fff0f5, #ffe4e1);
+      color: #333;
     }
 
     h2 {
@@ -84,17 +84,26 @@
       right: -40px;
     }
 
-    .button {
-      margin: 30px 10px;
-      padding: 10px 20px;
-      background-color: #0077cc;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
+   /* Buttons */
+    .buttons {
+      text-align: center;
+      margin: 3rem 0;
     }
 
-    .button:hover {
-      background-color: #005fa3;
+    .buttons a {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background-color: #e91e63;
+      color: #fff;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .buttons a:hover {
+      background-color: #d81b60;
     }
 
     @media (max-width: 480px) {
@@ -157,10 +166,12 @@
     <img src="Leeja_fairwellEmail.jpg" class="thumbnail" onclick="changeSlide(1)" alt="Thumb 2">
     <img src="Leeja_teamCall.jpg" class="thumbnail" onclick="changeSlide(2)" alt="Thumb 3">
   </div>
-<div class="buttons">
-  <a class="button" href="index.html">Back to Home</a>
-  <a class="button" href="message.html">Message for you</a>
-</div>
+  
+  <!-- Navigation Buttons -->
+  <div class="buttons">
+    <a href="message.html">Message for you</a>
+    <a href="index.html">Back to Home</a>
+  </div>
   
 
   <script>
