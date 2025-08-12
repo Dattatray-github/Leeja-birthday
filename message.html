@@ -4,29 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Birthday Letter</title>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Merriweather&display=swap" rel="stylesheet">
   <style>
     body {
-  
       font-family: 'Merriweather', serif;
       background: linear-gradient(to bottom, #fff0f5, #ffe4e1);
       color: #333;
+      margin: 0;
+      min-height: 100vh;
       
-      /* Center everything */
-      padding: 20px;
-      margin: 0 auto;
-
-      position: relative;
       display: flex;
-      overflow-x: hidden;
+      flex-direction: column;
+      justify-content: space-between; /* pushes letter up, button down */
       align-items: center;
+      overflow-x: hidden;
+      padding: 40px 20px;
+      box-sizing: border-box;
     }
 
     .letter {
       position: relative;
       max-width: 800px;
       width: 100%;
-      max-width: 100%;
       background: #fffafc url('https://www.transparenttextures.com/patterns/paper-fibers.png');
       background-size: cover;
       color: #222;
@@ -51,7 +50,7 @@
     .letter::before {
       top: 0;
       left: 0;
-      background-image: url('best-friend.jpg'); /* floral corner */
+      background-image: url('best-friend.jpg');
     }
     .letter::after {
       bottom: 0;
@@ -86,7 +85,7 @@
       }
     }
 
-    /* Signature in handwriting font */
+    /* Signature */
     .signature {
       text-align: right;
       font-size: 2rem;
@@ -95,12 +94,10 @@
       color: #e91e63;
     }
 
-  
-
-    /* Button style */
+    /* Button */
     .buttons {
-      margin-top: 3rem;
       text-align: center;
+      margin-top: 20px;
     }
 
     .buttons a {
@@ -117,34 +114,27 @@
     .buttons a:hover {
       background-color: #d81b60;
     }
-
-    
-
   </style>
 </head>
 <body>
-  <div>
-    <div class="letter">
-      <div class="date">August 22, 2025</div>
+  <div class="letter">
+    <div class="date">August 22, 2025</div>
 
-      <span class="drop-cap">D</span>ear Best Friend,
+    <span class="drop-cap">D</span>ear Best Friend,
 
-      Our friendship started with small chitchats, teams meetings later turned to few quarrels as well. We have been in such times, I wasn't talking to you. You still kept pinging, calling me. The friendship is kept by you only. Your efforts kept this friendship. I have ego problem, but still you managed to keep talking to me. 
+    Our friendship started with small chitchats, teams meetings later turned to few quarrels as well. We have been in such times, I wasn't talking to you. You still kept pinging, calling me. The friendship is kept by you only. Your efforts kept this friendship. I have ego problem, but still you managed to keep talking to me. 
 
-      You sent me gifts, prasadam and invitation to visit Jagannath Puri. Thank you for everything. I owe you much... 
+    You sent me gifts, prasadam and invitation to visit Jagannath Puri. Thank you for everything. I owe you much... 
 
-      Wish you a very happy birthday🎉 May you be blessed with good health, wealth and prosperity. Stay blessed! 
-      
-      Forever grateful,
+    Wish you a very happy birthday🎉 May you be blessed with good health, wealth and prosperity. Stay blessed! 
+    
+    Forever grateful,
 
-      <div class="signature">Your Friend 💖</div>
+    <div class="signature">Your Friend 💖</div>
+  </div>
 
-      <div class="wax-seal"></div>
-    </div>
-
-    <div class="buttons">
-      <a href="candles.html">Light your Birthday Candles 🍰</a>
-    </div>
+  <div class="buttons">
+    <a href="candles.html">Light your Birthday Candles 🍰</a>
   </div>
 </body>
 </html>
