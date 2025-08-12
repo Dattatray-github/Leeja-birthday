@@ -155,8 +155,6 @@
 <body>
   <header>
     <h1>Happy Birthday Leeja!</h1>
-    <img src="Leeja1.jpg" alt="Leeja Photo" />
-    <div class="countdown" id="countdown">Loading countdown...</div>
   </header>
 
   <!-- Timeline Section -->
@@ -189,30 +187,5 @@
     Made with ❤️ by your friend | 2025
   </footer>
 
-  <!-- Countdown Script -->
-  <script>
-    const countdownElement = document.getElementById("countdown");
-    const birthdayDate = new Date("2025-08-22T00:00:00").getTime();
-
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = birthdayDate - now;
-
-      if (distance < 0) {
-        countdownElement.innerText = "🎉 Happy Birthday! 🎉";
-        return;
-      }
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      countdownElement.innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-    }
-
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-  </script>
 </body>
 </html>
