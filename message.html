@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Letter</title>
+  <title>Birthday Letter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -18,17 +19,60 @@
     }
 
     .letter {
+      position: relative;
       max-width: 800px;
       width: 100%;
-      background-color: #fffafc;
+      background: #fffafc url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+      background-size: cover;
       color: #222;
       font-size: 1.8rem;
       line-height: 1.6;
       white-space: pre-wrap;
-      padding: 40px;
-      border: 3px solid #f8bbd0;
+      padding: 50px;
+      border: 4px solid #f8bbd0;
       border-radius: 16px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    /* Decorative corners */
+    .letter::before, .letter::after {
+      content: "";
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    .letter::before {
+      top: -15px;
+      left: -15px;
+      background-image: url('https://i.imgur.com/7gKpCyB.png'); /* floral corner */
+    }
+    .letter::after {
+      bottom: -15px;
+      right: -15px;
+      background-image: url('https://i.imgur.com/7gKpCyB.png');
+      transform: rotate(180deg);
+    }
+
+    /* Date header */
+    .date {
+      font-size: 1.2rem;
+      font-style: italic;
+      text-align: right;
+      margin-bottom: 20px;
+      color: #888;
+    }
+
+    /* Drop cap style */
+    .drop-cap {
+      float: left;
+      font-size: 4rem;
+      font-weight: bold;
+      line-height: 1;
+      margin-right: 10px;
+      color: #e91e63;
+      font-family: 'Great Vibes', cursive;
     }
 
     @media (max-width: 600px) {
@@ -38,15 +82,29 @@
       }
     }
 
+    /* Signature in handwriting font */
     .signature {
       text-align: right;
       font-size: 2rem;
       margin-top: 2rem;
+      font-family: 'Great Vibes', cursive;
       color: #e91e63;
     }
 
+    /* Wax seal */
+    .wax-seal {
+      width: 80px;
+      height: 80px;
+      position: absolute;
+      bottom: -30px;
+      right: -30px;
+      background-image: url('https://i.imgur.com/MYpG8Qc.png');
+      background-size: cover;
+    }
+
+    /* Button style */
     .buttons {
-      margin-top: 2rem;
+      margin-top: 3rem;
       text-align: center;
     }
 
@@ -65,12 +123,13 @@
       background-color: #d81b60;
     }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 </head>
 <body>
   <div>
     <div class="letter">
-      Dear Best Friend,
+      <div class="date">August 12, 2025</div>
+
+      <span class="drop-cap">D</span>ear Best Friend,
 
       I just wanted to say how much you mean to me. Every memory we've created together is a treasure I’ll never forget.
 
@@ -79,6 +138,8 @@
       Forever grateful,
 
       <div class="signature">Your Friend 💖</div>
+
+      <div class="wax-seal"></div>
     </div>
 
     <div class="buttons">
