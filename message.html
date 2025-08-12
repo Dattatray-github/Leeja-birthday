@@ -9,30 +9,26 @@
       margin: 0;
       padding: 40px 20px;
       font-family: 'Dancing Script', cursive, sans-serif;
-      background: linear-gradient(to bottom, #0b0c10, #1f1f1f);
-      color: #fff;
+      background: linear-gradient(to bottom, #fff0f5, #ffe4e1);
+      color: #333;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      position: relative;
-      overflow: hidden;
     }
 
     .letter {
-      position: relative;
       max-width: 800px;
       width: 100%;
-      background-color: rgba(255, 248, 231, 0.95);
+      background-color: #fffafc;
       color: #222;
       font-size: 1.8rem;
       line-height: 1.6;
       white-space: pre-wrap;
       padding: 40px;
+      border: 3px solid #f8bbd0;
       border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
-      animation: fadeIn 1.2s ease-in-out;
-      z-index: 2;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
 
     @media (max-width: 600px) {
@@ -42,119 +38,52 @@
       }
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
     .signature {
       text-align: right;
       font-size: 2rem;
       margin-top: 2rem;
       color: #e91e63;
-      opacity: 0;
-      animation: fadeIn 1s ease 4s forwards;
     }
 
-    .star {
-      position: absolute;
-      top: -10px;
-      width: 2px;
-      height: 60px;
-      background: linear-gradient(-45deg, #fff, transparent);
-      animation: fall linear infinite;
-      opacity: 0.6;
-      z-index: 1;
+    .buttons {
+      margin-top: 2rem;
+      text-align: center;
     }
 
-    @keyframes fall {
-      0% {
-        transform: translateY(0) translateX(0) rotate(45deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(100vh) translateX(50px) rotate(45deg);
-        opacity: 0;
-      }
+    .buttons a {
+      display: inline-block;
+      background-color: #e91e63;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1.6rem;
+      transition: background-color 0.3s ease;
     }
-.buttons {
-  margin-top: 2rem;
-  text-align: center;
-  z-index: 2;
-}
 
-.buttons a {
-  display: inline-block;
-  background-color: #e91e63;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 1.6rem;
-  transition: background-color 0.3s ease;
-  margin-top: 20px;
-}
-
-.buttons a:hover {
-  background-color: #d81b60;
-}
-    
+    .buttons a:hover {
+      background-color: #d81b60;
+    }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="letter" id="letterText"></div>
+  <div>
+    <div class="letter">
+      Dear Best Friend,
 
-   <!-- Button shown separately after letter -->
-  <div class="buttons" id="nextPageButton">
-    <a href="candles.html">Light your Birthday Candles 🍰</a>
-  </div>
+      I just wanted to say how much you mean to me. Every memory we've created together is a treasure I’ll never forget.
 
-  <script>
-    const text = `Dear Best Friend,
+      Through laughter, tears, and endless conversations, you've been by my side. Thank you for being the wonderful person you are.
 
-I just wanted to say how much you mean to me. Every memory we've created together is a treasure I’ll never forget.
+      Forever grateful,
 
-Through laughter, tears, and endless conversations, you've been by my side. Thank you for being the wonderful person you are.
-
-Forever grateful,`;
-
-    const signature = `
       <div class="signature">Your Friend 💖</div>
-    `;
+    </div>
 
-    const element = document.getElementById("letterText");
-    let index = 0;
-
-    function typeWriter() {
-      if (index < text.length) {
-        element.innerHTML += text.charAt(index);
-        index++;
-        setTimeout(typeWriter, 40);
-      } else {
-        element.innerHTML += signature;
-      }
-    }
-
-    // Start the animation
-    typeWriter();
-
-    // Create falling stars
-    function createStar() {
-      const star = document.createElement('div');
-      star.classList.add('star');
-      star.style.left = `${Math.random() * 100}vw`;
-      star.style.animationDuration = `${2 + Math.random() * 3}s`;
-      document.body.appendChild(star);
-      
-      setTimeout(() => {
-        star.remove();
-      }, 5000);
-    }
-
-    setInterval(createStar, 250);
-  </script>
-  
-
+    <div class="buttons">
+      <a href="candles.html">Light your Birthday Candles 🍰</a>
+    </div>
+  </div>
 </body>
 </html>
